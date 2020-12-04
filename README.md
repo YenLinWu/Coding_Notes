@@ -25,7 +25,7 @@ string.ascii_uppercase
 ```
 > 'dlroW olleH' 
 
-### List (back to [Contents](#Contents))
+### List 
 - Convert list to string   
 ```python
 list_ = ['A','B','C']
@@ -132,7 +132,7 @@ list_ += ['New','Old']
 list_
 ```
 > [1, 2, 3, 'New', 'Old']
-
+Back to [Contents](#Contents)
 
 ### Others
 - `zip()` method takes iterables (can be zero or more), aggregates them in a tuple, and return it.
