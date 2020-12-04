@@ -1,8 +1,9 @@
 # Coding Notes
 
-## Python  
+# Python  
 ## Contents
 * [String](#String)
+* [List](#List)
 
 ## String
 - Create a range of alphabets   
