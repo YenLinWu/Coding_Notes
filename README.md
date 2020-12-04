@@ -131,7 +131,7 @@ list_ = [1,2,3]
 list_ += ['New','Old'] 
 list_
 ```
-> [1, 2, 3, 'New', 'Old']
+> [1, 2, 3, 'New', 'Old']    
 Back to [Contents](#Contents)
 
 ### Others
