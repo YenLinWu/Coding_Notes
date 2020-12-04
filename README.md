@@ -4,6 +4,7 @@
 ## Contents
 * [String](#String)
 * [List](#List)
+* [Dictionary](#Dictionary)
 * [Others](#Others)
 
 ### String
@@ -24,6 +25,8 @@ string.ascii_uppercase
 'Hello World'[::-1]  
 ```
 > 'dlroW olleH' 
+  
+Back to [Contents](#Contents)
 
 ### List 
 - Convert list to string   
@@ -41,6 +44,13 @@ str2 = ''.join( str(i) for i in list_ if i%2==0 )
 str2
 ```
 > '2468'
+
+- Find the index of an element in a list  
+```python
+list_ = ['A','B','C','D','E']
+list_.index('C')
+```
+> 2
 
 - Remove the element from a list
 ```python
@@ -135,6 +145,55 @@ list_
   
 Back to [Contents](#Contents)
 
+### Dictionary
+- Convert two lists into a dictionary  
+```python
+keys = [1,2,3]
+values = ['A','B','C']
+dict_ = dict( zip(keys,values) )
+dict_
+```
+> {1: 'A', 2: 'B', 3: 'C'}  
+
+```python
+dict_ = { k:v for k, v in zip(keys,values) }
+dict_
+```
+> {1: 'A', 2: 'B', 3: 'C'}  
+
+- Get value of Key  
+```python
+dict_ = {1:'A',2:'B',3:'C'}
+dict_[1]  # or dict_.get(1)
+```
+> 'A'   
+
+`get()` method allows us to provide a default value if the key is missing :  
+```python
+dict_ = {1:'A',2:'B',3:'C'}
+dict_.get( 4,'No Data' )
+```
+> 'No Data'  
+
+- Delete the element from a dictionary  
+`del` statement removes an element from a divtionary.   
+```python
+dict_ = {1:'A',2:'B',3:'C'}
+del dict_[ 2 ]  # del dictionary[ key ]
+dict_
+```
+> {1:'A',3:'C'}  
+  
+- Add an item into the 1st location in a dictionary  
+```python
+dict_ = {1:'A',2:'B',3:'C'}
+dict_ = {4:'D', **dict_}
+dict_
+```
+> {4: 'D', 1: 'A', 2: 'B', 3: 'C'}
+  
+Back to [Contents](#Contents)
+
 ### Others
 - `zip()` method takes iterables (can be zero or more), aggregates them in a tuple, and return it.
 ```python
@@ -168,4 +227,6 @@ for i, a in enumerate( list_ ):
 > 0 A  
 > 1 B  
 > 2 C  
+  
+Back to [Contents](#Contents)
 
