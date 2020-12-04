@@ -4,8 +4,9 @@
 ## Contents
 * [String](#String)
 * [List](#List)
+* [Others](#Others)
 
-## String
+### String
 - Create a range of alphabets   
 ```python
 import string
@@ -24,7 +25,7 @@ string.ascii_uppercase
 ```
 > 'dlroW olleH' 
 
-### List
+### List (back to [Contents](#Contents))
 - Convert list to string   
 ```python
 list_ = ['A','B','C']
