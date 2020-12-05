@@ -1,13 +1,13 @@
-# Coding Notes
+# Python Programming Notes
+![Python3.7](https://img.shields.io/badge/Python-3.7-blue.svg)
 
-# Python  
 ## Contents
 * [String](#String)
 * [List](#List)
 * [Dictionary](#Dictionary)
 * [Others](#Others)
 
-### String
+## String
 - Create a range of alphabets   
 ```python
 import string
@@ -28,7 +28,7 @@ string.ascii_uppercase
   
 Back to [Contents](#Contents)
 
-### List 
+## List 
 - Convert list to string   
 ```python
 list_ = ['A','B','C']
@@ -145,7 +145,7 @@ list_
   
 Back to [Contents](#Contents)
 
-### Dictionary
+## Dictionary
 - Convert two lists into a dictionary  
 ```python
 keys = [1,2,3]
@@ -194,7 +194,7 @@ dict_
   
 Back to [Contents](#Contents)
 
-### Others
+## Others
 - `zip()` method takes iterables (can be zero or more), aggregates them in a tuple, and return it.
 ```python
 A_list = ['A1','A2','A3']
