@@ -32,7 +32,7 @@ Back to [Contents](#Contents)
 - Convert list to string   
 ```python
 list_ = ['A','B','C']
-string = '/'.join(list_)
+string = '/'.join( list_ )
 string
 ```
 > 'A/B/C' 
@@ -44,6 +44,13 @@ str2 = ''.join( str(i) for i in list_ if i%2==0 )
 str2
 ```
 > '2468'
+
+- Reverse a list  
+```python
+list_ = [1,2,3,4,5,6,7,8,9]
+list_[::-1]  # or list( reversed(list_) ) 
+```
+> [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 - Find the index of an element in a list  
 ```python
