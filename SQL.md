@@ -4,7 +4,7 @@
 * [Create the Empty Table](#Create the Empty Table)
 * [Create the Table Using Another Table](#Create the Table Using Another Table)
 * [WHERE](#WHERE)
-* [ORDER BY](#ORDER BY)
+* [ORDER BY](#[ORDER BY])
 * [GROUP BY](#GROUP BY)
 
 ## Create the Empty Table  
