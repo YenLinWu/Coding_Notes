@@ -1,13 +1,13 @@
 # SQL Programming Notes
 
 ## Contents
-* [Create the Empty Table](#Create the Empty Table)
-* [Create the Table Using Another Table](#Create the Table Using Another Table)
+* [Create the Empty Table](#Create_the_Empty_Table)
+* [Create the Table Using Another Table](#Create_the_Table_Using_Another_Table)
 * [WHERE](#WHERE)
-* [ORDER BY](#"ORDER BY")
-* [GROUP BY](#GROUP BY)
+* [ORDER BY](#ORDER_BY)
+* [GROUP BY](#GROUP_BY)
 
-## Create the Empty Table  
+## Create_the_Empty_Table  
 **Syntax**
 ```sql
 CREATE TABLE table_name (
@@ -32,7 +32,7 @@ CREATE TABLE Summary (
 
 Back to [Contents](#Contents)
 
-## Create the Table Using Another Table   
+## Create_the_Table_Using_Another_Table   
 A copy of an existing table can be created using `CREATE TABLE`.  
 <br>
 **Syntax**  
@@ -123,7 +123,7 @@ WHERE price>350 AND quantity<20
 
 Back to [Contents](#Contents)
 
-## ORDER BY 
+## ORDER_BY 
 The `ORDER BY` keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword.
 <br>
 **Syntax**  
@@ -157,7 +157,7 @@ ORDER BY quantity DESC, price ASC
 
 Back to [Contents](#Contents)
 
-## GROUP BY
+## GROUP_BY
 The `GROUP BY` statement groups rows that have the same values into summary rows. The `GROUP BY` statement is often used with aggregate functions (COUNT, MAX, MIN, SUM, AVG) to group the result-set by one or more columns.  
 <br>
 **Syntax**  
