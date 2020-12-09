@@ -6,6 +6,8 @@
 * [SELECT DISTINCT](#SELECT_DISTINCT)
 * [INSERT INTO](#INSERT_INTO) 
 * [UPDATE](#UPDATE)
+* [DELETE](#DELETE)
+* [JOIN](#JOIN)
 * [WHERE](#WHERE)
 * [ORDER BY](#ORDER_BY)
 * [GROUP BY](#GROUP_BY)
@@ -182,6 +184,123 @@ WHERE name = 'Bob'
 > | 1 | Tom | 28 |
 > | 2 | Bob | 50 |
 > | 3 | Amy | 19 |
+
+Back to [Contents](#Contents)
+<br>
+
+## DELETE  
+The `DELETE` statement is used to delete existing records in a table.  
+<br>
+**Syntax**  
+```sql
+DELETE FROM table_name 
+WHERE condition
+```
+Note : The `WHERE` clause specifies which record(s) should be deleted. If we omit the `WHERE` clause, all records in the table will be deleted.
+
+【Example】   
+There is an existing table called "MyTable" : 
+| ID | name | age | 
+| ---------- | ----------- | ---------- | 
+| 1 | Tom | 28 |
+| 2 | Bob | 19 |
+| 3 | Amy | 19 |
+
+Delete the data with age > 20 : 
+```sql
+DELETE FROM MyTable
+WHERE age > 20 
+```
+> | ID | name | age | 
+> | ---------- | ----------- | ---------- | 
+> | 2 | Bob | 19 |
+> | 3 | Amy | 19 |
+
+Back to [Contents](#Contents)
+<br>
+
+## JOIN  
+A `JOIN` clause is used to combine rows from two or more tables, based on a related column between them.
+![IMAGE](/SQL%20Syntax/SQL%20JOIN.png)
+<br>
+**Syntax about INNER JOIN**  
+```sql
+SELECT table_1.column_1, table_1.column_2, table_2.column_1, table_2.column_2, ...
+FROM table_1
+INNER JOIN table_2 
+ON table_1.key_column = table_2.key_column
+```
+
+【Example】   
+We have the following two tables :   
+Table1 
+| ID | name | height | weight |
+| ---------- | ----------- | ---------- | ----------- | 
+| 1 | Jack | 180 | 75 |
+| 2 | Andy | 175 | 65 |
+| 3 | Mark | 183 | 90 |
+| 4 | Rose | 163 | 45 |
+  
+Table2 
+| ID | sex | 
+| ---------- | ----------- | 
+| 2 | M | 
+| 3 | M | 
+| 4 | F |
+| 5 | F |
+
+(1) The `INNER JOIN` keyword selects all rows from both the tables as long as the condition satisfies. 
+```sql
+SELECT Table1.ID, Table1.name, Table2.sex
+FROM Table1  
+INNER JOIN Table2 
+ON Table1.ID = Table2.ID 
+```
+> | ID | name | sex | 
+> | ---------- | ----------- | ----------- | 
+> | 2 | Andy | M |
+> | 3 | Mark | M |
+> | 4 | Rose | F |
+
+```sql
+SELECT Table1.ID, Table1.name, Table2.sex
+FROM Table1  
+INNER JOIN Table2 
+ON Table1.ID = Table2.ID 
+WHERE Table1.name = 'Rose'
+```
+> | ID | name | sex | 
+> | ---------- | ----------- | ----------- | 
+> | 4 | Rose | F |
+
+(2) The `LEFT JOIN` returns all the rows of the table on the left side of the join and matching rows for the table on the right side of join. The rows for which there is no matching row on right side, the result-set will contain null. (`LEFT JOIN` is also known as `LEFT OUTER JOIN`)  
+```sql
+SELECT Table1.ID, Table1.name, Table1.height, Table2.sex
+FROM Table1  
+LEFT JOIN Table2 
+ON Table1.ID = Table2.ID 
+```
+> | ID | name | height | sex | 
+> | ---------- | ----------- | ----------- | ----------- | 
+> | 1 | Jack | 180 | NULL |
+> | 2 | Andy | 175 | M |
+> | 3 | Mark | 183 | M |
+> | 4 | Rose | 163 | F |
+
+(3) The `FULL JOIN` creates the result-set by combining result of both `LEFT JOIN` and `RIGHT JOIN`. The result-set will contain all the rows from both the tables. The rows for which there is no matching, the result-set will contain NULL values.
+```sql
+SELECT Table1.name, Table1.height, Table2.sex
+FROM Table1  
+FULL JOIN Table2 
+ON Table1.ID = Table2.ID 
+```
+> | name | height | sex | 
+> | ---------- | ----------- | ----------- | 
+> | Jack | 180 | NULL |
+> | Andy | 175 | M |
+> | Mark | 183 | M |
+> | Rose | 163 | F |
+> | NULL | NULL | F |
 
 Back to [Contents](#Contents)
 <br>
