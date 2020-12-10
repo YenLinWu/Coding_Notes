@@ -1,7 +1,7 @@
 # SQL Programming Notes
 
 ## Contents
-* [Create the Empty Table](#Create_the_Empty_Table)
+* [CREATE TABLE](#CREATE_TABLE)
 * [SELECT](#SELECT)
 * [SELECT DISTINCT](#SELECT_DISTINCT)
 * [UNION](#UNION)
@@ -12,8 +12,13 @@
 * [WHERE](#WHERE)
 * [ORDER BY](#ORDER_BY)
 * [GROUP BY](#GROUP_BY)
+* [BETWEEN](#BETWEEN)
+* [IN](#IN)
+* [ANY](#ANY)
+* [ALL](#ALL)
+* [CASE](#CASE)
 
-## Create_the_Empty_Table  
+## CREATE_TABLE  
 **Syntax**
 ```sql
 CREATE TABLE table_name (
@@ -52,7 +57,6 @@ ORDER BY column_name(s) ASC|DESC
 
 (i) Create the Table Using Another Table   
 A copy of an existing table can be created using `CREATE TABLE`.  
-<br>  
 **Syntax**  
 ```sql
 CREATE TABLE new_table_name AS
@@ -483,6 +487,243 @@ HAVING average_price > 400
 > | ---------- | ----------- | ---------- | ----------- | 
 > | B | 2 | 475 | 50 |
 > | C | 2 | 450 | 35 |
+
+Back to [Contents](#Contents)
+<br>
+
+## BETWEEN
+The `BETWEEN` operator selects values within a given range (begin and end values are included).   
+<br>
+**Syntax**  
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2
+```
+  
+【Example】   
+There is an existing table called "MyTable" : 
+| ID | name | age | 
+| ---------- | ----------- | ---------- | 
+| 1 | Tom | 31 |
+| 2 | Bob | 21 |
+| 3 | Amy | 28 |
+| 4 | Ken | 39 |
+| 5 | Vic | 30 |
+
+Select all names with a age BETWEEN 21 and 30 :  
+```sql
+SELECT *
+FROM MyTable
+WHERE age BETWEEN 21 AND 30
+```
+> | ID | name | age | 
+> | ---------- | ----------- | ----------- |   
+> | 2 | Bob | 21 |
+> | 3 | Amy | 28 |
+> | 5 | Vic | 30 |
+
+Back to [Contents](#Contents)
+<br>
+
+## IN  
+The `IN` operator allows us to specify multiple values in a `WHERE` clause.  
+<br>
+**Syntax**  
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...)
+```
+
+【Example】   
+There is an existing table called "MyTable" : 
+| ID | name | age | location | 
+| ---------- | ----------- | ---------- | ---------- | 
+| 1 | Tom | 31 | Taipei |
+| 2 | Bob | 21 | Tainan |
+| 3 | Amy | 28 | Hsinchu |
+| 4 | Ken | 39 | Taipei |
+| 5 | Patty | 30 | Kaohsiung  |  
+
+Select all names that are located in "Taipei" or "Kaohsiung" :
+```sql
+SELECT * 
+FROM MyTable
+WHERE location IN ('Taipei', 'Kaohsiung')
+```
+> | ID | name | age | location | 
+> | ---------- | ----------- | ---------- | ---------- | 
+> | 1 | Tom | 31 | Taipei |
+> | 4 | Ken | 39 | Taipei |
+> | 5 | Patty | 30 | Kaohsiung  |  
+
+Select all names that are  not located in "Taipei" or "Kaohsiung" :
+```sql
+SELECT * 
+FROM MyTable
+WHERE location NOT IN ('Taipei', 'Kaohsiung')
+```
+> | ID | name | age | location | 
+> | ---------- | ----------- | ---------- | ---------- | 
+> | 2 | Bob | 21 | Tainan |
+> | 3 | Amy | 28 | Hsinchu |
+
+Back to [Contents](#Contents)
+<br>
+
+## ANY  
+The `ANY` operator returns true if any of the subquery values meet the condition.   
+<br>
+**Syntax**  
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+(SELECT column_name FROM table_name WHERE condition)
+```
+Note : The operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=). 
+
+【Example】   
+We have the following two tables :   
+Table1 
+| ID | name | height | weight |
+| ---------- | ----------- | ---------- | ----------- | 
+| 1 | Jack | 180 | 75 |
+| 2 | Andy | 175 | 65 |
+| 3 | Mark | 183 | 90 |
+| 4 | Rose | 163 | 45 |
+| 5 | Tom | 172 | 70 |
+  
+Table2 
+| ID | score | 
+| ---------- | ----------- | 
+| 1 | 120 |
+| 2 | 115 | 
+| 3 | 150 | 
+| 4 | 135 |
+| 5 | 140 |
+
+```sql
+SELECT *
+FROM Table1 
+WHERE ID = ANY
+(SELECT ID FROM Table2 WHERE score >= 135)
+```
+> | ID | name | height | weight |
+> | ---------- | ----------- | ---------- | ----------- | 
+> | 3 | Mark | 183 | 90 |
+> | 4 | Rose | 163 | 45 |
+> | 5 | Tom | 172 | 70 |
+
+Back to [Contents](#Contents)
+<br>
+
+## ALL  
+The `ALL` operator returns true if all of the subquery values meet the condition.   
+<br>
+**Syntax**  
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+(SELECT column_name FROM table_name WHERE condition)
+```
+Note : The operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=). 
+
+【Example】   
+We have the following two tables :   
+Table1 
+| ID | name | height | weight |
+| ---------- | ----------- | ---------- | ----------- | 
+| 1 | Jack | 180 | 75 |
+| 2 | Andy | 175 | 65 |
+| 3 | Mark | 183 | 90 |
+| 4 | Rose | 163 | 45 |
+| 5 | Tom | 172 | 70 |
+  
+Table2 
+| ID | score | 
+| ---------- | ----------- | 
+| 1 | 120 |
+| 2 | 115 | 
+| 3 | 150 | 
+| 4 | 135 |
+| 5 | 140 |
+
+```sql
+SELECT *
+FROM Table1 
+WHERE ID = ALL
+(SELECT ID FROM Table2 WHERE score >= 135)
+```
+> | ID | name | height | weight |
+> | ---------- | ----------- | ---------- | ----------- | 
+> | 3 | Mark | 183 | 90 |
+> | 4 | Rose | 163 | 45 |
+> | 5 | Tom | 172 | 70 |
+
+Back to [Contents](#Contents)
+<br>
+
+## CASE
+The `CASE` statement goes through conditions and returns a value when the first condition is met (like an IF-THEN-ELSE statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the `ELSE` clause.  
+<br>
+**Syntax**  
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN ...
+    ELSE result
+END
+```
+or  
+```sql
+CASE expression
+    WHEN value1 THEN result1
+    WHEN value2 THEN result2
+    WHEN ...
+    ELSE result
+END
+```
+Note : if there is no `ELSE` part and no conditions are true, it returns NULL.
+
+【Example】   
+There is an existing table called "MyTable" :   
+| ID | degree | 
+| ---------- | ----------- | 
+| 01 | A | 
+| 02 | D | 
+| 03 | C | 
+| 04 | B | 
+| 05 | A | 
+
+```sql
+SELECT ID, CASE 
+    WHEN degree='A' THEN 100
+    WHEN degree='B' THEN 80
+    WHEN degree='C' THEN 60
+    ELSE 40
+END
+AS degree
+FROM MyTable
+# or 
+# SELECT ID, CASE degree
+#     WHEN 'A' THEN 100
+#     WHEN 'B' THEN 80
+#     WHEN 'C' THEN 60
+#     ELSE 40
+# END
+# FROM MyTable
+```
+> | ID | degree | 
+> | ---------- | ----------- | 
+> | 01 | 100 | 
+> | 02 | 40 | 
+> | 03 | 60 | 
+> | 04 | 80 | 
+> | 05 | 100 | 
 
 Back to [Contents](#Contents)
 <br>
