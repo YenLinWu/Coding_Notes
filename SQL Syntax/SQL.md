@@ -4,6 +4,7 @@
 * [Create the Empty Table](#Create_the_Empty_Table)
 * [SELECT](#SELECT)
 * [SELECT DISTINCT](#SELECT_DISTINCT)
+* [UNION](#UNION)
 * [INSERT INTO](#INSERT_INTO) 
 * [UPDATE](#UPDATE)
 * [DELETE](#DELETE)
@@ -20,7 +21,7 @@ CREATE TABLE table_name (
     column2 datatype,
     column3 datatype,
    ....
-);
+)
 ```
 
 【Example】 
@@ -110,6 +111,67 @@ CREATE TABLE Class AS
 > | A |
 > | B | 
 > | C | 
+
+Back to [Contents](#Contents)
+<br>
+
+## UNION  
+The `UNION` operator is used to combine the result-set of two or more `SELECT` statements. Each `SELECT` statement within UNION must satisfy the following conditions : 
+- Each `SELECT` statement have the same number of columns； 
+- The columns in each `SELECT` statement must also be in the same order；
+- The columns must also have similar data types.  
+
+**Syntax**  
+```sql
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2
+```
+
+【Example】   
+There are two existing tables :   
+Table1 
+| ID | name | height | weight |
+| ---------- | ----------- | ---------- | ----------- | 
+| 1 | Jack | 180 | 75 |
+| 2 | Andy | 175 | 65 |
+| 3 | Mark | 183 | 90 |
+  
+Table2 
+| ID | name | height | weight |
+| ---------- | ----------- | ---------- | ----------- | 
+| 1 | Tom | 172 | 68 |
+| 2 | Ellen | 167 | 55 |
+| 3 | Jack | 180 | 75 |
+
+(1) The `UNION` operator returns the names (only distinct values) from both the "Table1" and the "Table2" table : 
+```sql
+SELECT name FROM Table1
+UNION
+SELECT name FROM table2
+```
+> | name |
+> | ---------- |
+> | Jack |
+> | Andy |
+> | Mark |  
+> | Tom | 
+> | Ellen | 
+
+(2) Use `UNION ALL` to also select duplicate values : 
+```sql
+SELECT name FROM Table1
+UNION ALL  
+SELECT name FROM table2
+```
+> | name |
+> | ---------- |
+> | Jack |
+> | Andy |
+> | Mark |  
+> | Tom | 
+> | Ellen | 
+> | Jack | 
 
 Back to [Contents](#Contents)
 <br>
@@ -424,9 +486,3 @@ HAVING average_price > 400
 
 Back to [Contents](#Contents)
 <br>
-
-
-
-
-
-
