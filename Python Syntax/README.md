@@ -5,7 +5,8 @@
 * [String](#String)
 * [List](#List)
 * [Dictionary](#Dictionary)
-* [Others](#Others)
+* [Others](#Others) 
+* [Examples](#Examples)
 
 ## String
 - Create a range of alphabets   
@@ -237,3 +238,15 @@ for i, a in enumerate( list_ ):
   
 Back to [Contents](#Contents)
 
+## Examples
+- Highest Common Factor(最大公因數)  
+```python
+def hcf(x,y):
+   list_ = range(1,min(x,y)+1)    
+   for i in list_[::-1] :
+       if x%i==0 and y%i==0:
+           break
+   return i
+```
+
+Back to [Contents](#Contents)
