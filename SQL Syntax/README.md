@@ -14,6 +14,7 @@
 * [GROUP BY](#GROUP_BY)
 * [BETWEEN](#BETWEEN)
 * [IN](#IN)
+* [LIKE](#LIKE)
 * [ANY](#ANY)
 * [ALL](#ALL)
 * [CASE](#CASE)
@@ -558,7 +559,7 @@ WHERE location IN ('Taipei', 'Kaohsiung')
 > | 4 | Ken | 39 | Taipei |
 > | 5 | Patty | 30 | Kaohsiung  |  
 
-Select all names that are  not located in "Taipei" or "Kaohsiung" :
+Select all names that are not located in "Taipei" or "Kaohsiung" :
 ```sql
 SELECT * 
 FROM MyTable
@@ -568,6 +569,42 @@ WHERE location NOT IN ('Taipei', 'Kaohsiung')
 > | ---------- | ----------- | ---------- | ---------- | 
 > | 2 | Bob | 21 | Tainan |
 > | 3 | Amy | 28 | Hsinchu |
+
+Back to [Contents](#Contents)
+<br>
+
+## LIKE
+The `LIKE` operator is used in a 'WHERE' clause to search for a specified pattern in a column.
+The following examples show different LIKE operators with '%' and '_' wildcards : 
+| LIKE Operator | Description |  
+| ---------- | ----------- | 
+| LIKE 'a%' | Finds any values that start with "a" | 
+| LIKE 'a%' | Finds any values that end with "a" |
+| LIKE '_b%' | Finds any values that have "b" in the second position |
+| LIKE 'a%z' | Finds any values that start with "a" and ends with "z" |
+| LIKE 'a_%' | Finds any values that start with "a" and are at least 2 characters in length |
+
+【Example】   
+There is an existing table called "MyTable" : 
+| ID | name | age | location | 
+| ---------- | ----------- | ---------- | ---------- | 
+| 1 | Tom | 31 | Taipei |
+| 2 | Bob | 21 | Tainan |
+| 3 | Amy | 28 | Hsinchu |
+| 4 | Ken | 39 | Taipei |
+| 5 | Patty | 30 | Kaohsiung  |  
+
+Select all names that are located in cuty with name starting with "T" :
+```sql
+SELECT * 
+FROM MyTable
+WHERE location LIKE 'T%'
+```
+> | ID | name | age | location | 
+> | ---------- | ----------- | ---------- | ---------- | 
+> | 1 | Tom | 31 | Taipei |
+> | 2 | Bob | 21 | Tainan |
+> | 4 | Ken | 39 | Taipei |
 
 Back to [Contents](#Contents)
 <br>
