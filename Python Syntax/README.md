@@ -46,6 +46,46 @@ str2
 ```
 > '2468'
 
+- Pick up elements in a list 
+```python
+list_ = [1,2,3,4,5,6,7,8,9]
+```
+
+```python
+list_[:3]  # or list_[:3:]
+```
+> [1, 2, 3]
+
+```python
+list_[:-3]
+```
+> [1, 2, 3, 4, 5, 6]
+
+```python
+list_[::3]
+```
+> [1, 4, 7]
+
+```python
+list_[::-3]
+```
+> [9, 6, 3]
+
+```python
+list_[:2:-3]
+```
+> [9, 6]
+
+```python
+list_[3::-1]
+```
+> [4, 3, 2, 1]
+
+```python
+list_[:3:-1]
+```
+> [9, 8, 7, 6, 5] 
+
 - Reverse a list  
 ```python
 list_ = [1,2,3,4,5,6,7,8,9]
@@ -85,7 +125,7 @@ list_
 Remove the last element of a list : 
 ```python
 list_ = [1,2,3,4,5]
-list_ .pop()
+list_.pop()  # or list_[:-1]
 list_ 
 ```
 > [1, 2, 3, 4] 
