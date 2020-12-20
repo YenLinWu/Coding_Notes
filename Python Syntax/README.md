@@ -288,5 +288,15 @@ def hcf(x,y):
            break
    return i
 ```
+```python
+def hcf(x,y):
+    while y:
+        r = x%y
+        x = y
+        y = r
+    return x 
+```
+
+
 
 Back to [Contents](#Contents)
