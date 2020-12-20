@@ -282,8 +282,7 @@ Back to [Contents](#Contents)
 - Highest Common Factor(最大公因數)  
 ```python
 def hcf(x,y):
-   list_ = range(1,min(x,y)+1)    
-   for i in list_[::-1] :
+   for i in range( min(x,y)+1, 0, -1 ) :
        if x%i==0 and y%i==0:
            break
    return i
@@ -296,7 +295,5 @@ def hcf(x,y):
         y = r
     return x 
 ```
-
-
 
 Back to [Contents](#Contents)
