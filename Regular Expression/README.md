@@ -2,6 +2,8 @@
 
 ## Contents
 * [Meta Character](#Meta_Character)
+* [Character Classes](#Character_Classes)
+* [Examples](#Examples)
 
 ## Meta_Character
 
@@ -20,15 +22,31 @@
 |&#92;| Escape the next character. This allows you to match reserved characters <code>[ ] ( ) { } . * + ? ^ $ \ &#124;</code> <br/> 表示鄰接字符應視為字符 |
 |&#124;| Alternation. Match either the characters before or the characters after the symbol. |
 
-【Examples】  
+Back to [Contents](#Contents)
+<br>
+
+## Character_Classes
+
+| Character Classes <br/> 字符集 | Description <br/> 說明 |
+|:----:|----|
+|\w| Match alphanumeric characters: `[a-zA-Z0-9_]` <br/> 匹配所有的字母與數字 |
+|\W| Match non-alphanumeric characters: `[^\w]` <br/> 匹配所有的符號(非字母、非數字) |
+|\d| Match digits: `[0-9]` <br/> 匹配數字 |
+|\D| Match non-digits: `[^\d]` <br/> 匹配非數字 |
+|\s| Match whitespace characters: `[\t\n\f\r\p{Z}]` <br/> 匹配所有空格符號 |
+|\S| Match non-whitespace characters: `[^\s]` <br/> 匹配所有非空格符號 |
+
+Back to [Contents](#Contents)
+<br>
+
+## Examples   
+
 | Test String | Regular Expression |
 |:----|----|
 | This is<code> just\na simple </code>sentence. | <code>(?<=This is)(.*)(?=sentence)</code> | 
 | <a href="#learn-regex"><strong>106<strong></a> 台北市大安區仁愛路 <br> <a href="#learn-regex"><strong>801<strong></a> 高雄市前金區八德二路 <br> <a href="#learn-regex"><strong>266<strong></a> 宜蘭縣三星鄉建富路一段 | <code>[^\D]</code> | 
 | 106 <a href="#learn-regex"><strong>台北市<strong></a>大安區仁愛路 <br> 801 <a href="#learn-regex"><strong>高雄市<strong></a>前金區八德二路 <br> 266 <a href="#learn-regex"><strong>宜蘭縣<strong></a>三星鄉建富路一段 | <code>(?<=\D)(.\*)(?<=市\|縣)</code> <br> <code>(?<=\s)(.\*)(?<=市\|縣)</code> | 
 | 106 台北市<a href="#learn-regex"><strong>大安區<strong></a>仁愛路 <br> 801 高雄市<a href="#learn-regex"><strong>前金區<strong></a>八德二路 <br> 266 宜蘭縣<a href="#learn-regex"><strong>三星鄉<strong></a>建富路一段 | <code>(?<=市\|縣)(.*)(?<=區\|鄉)</code> |
-
-
 
 Back to [Contents](#Contents)
 <br>
