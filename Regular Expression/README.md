@@ -44,7 +44,7 @@ Back to [Contents](#Contents)
 | Test String | Regular Expression |
 |:----|----|
 | This is<code> just\na simple </code>sentence. | <code>(?<=This is)(.*)(?=sentence)</code> | 
-| <a href="#learn-regex"><strong>A1B2C3<strong></a>? <br> <a href="#learn-regex"><strong>A1B2C3<strong></a>?? <br> <a href="#learn-regex"><strong>A1<strong></a>??B2C3 | <code>^[^\\?]*</code> | 
+| <a href="#learn-regex"><strong>A1B2C3<strong></a>? <br> <a href="#learn-regex"><strong>A1B2C3<strong></a>?? <br> <a href="#learn-regex"><strong>A1<strong></a>??B2C3 <br> ??A1B2C3 | <code>^[^\\?]*</code> | 
 | <a href="#learn-regex"><strong>106<strong></a> 台北市大安區仁愛路 <br> <a href="#learn-regex"><strong>801<strong></a> 高雄市前金區八德二路 <br> <a href="#learn-regex"><strong>266<strong></a> 宜蘭縣三星鄉建富路一段 | <code>[^\D]</code> | 
 | 106 <a href="#learn-regex"><strong>台北市<strong></a>大安區仁愛路 <br> 801 <a href="#learn-regex"><strong>高雄市<strong></a>前金區八德二路 <br> 266 <a href="#learn-regex"><strong>宜蘭縣<strong></a>三星鄉建富路一段 | <code>(?<=\D)(.\*)(?<=市\|縣)</code> <br> <code>(?<=\s)(.\*)(?<=市\|縣)</code> | 
 | 106 台北市<a href="#learn-regex"><strong>大安區<strong></a>仁愛路 <br> 801 高雄市<a href="#learn-regex"><strong>前金區<strong></a>八德二路 <br> 266 宜蘭縣<a href="#learn-regex"><strong>三星鄉<strong></a>建富路一段 | <code>(?<=市\|縣)(.*)(?<=區\|鄉)</code> |
