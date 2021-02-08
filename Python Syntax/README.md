@@ -296,4 +296,45 @@ def hcf(x,y):
     return x 
 ```
 
+- Index of Minimum/Maximum Value in DataFrame
+```python
+# Create a data frame
+df = pd.DataFrame( {'ID':['A','B','C','D','E'],'Score':[20,300,20,50,300]},
+                   index=[1,2,3,4,5] )
+df
+```
+|  | ID | Score | 
+| ---------- | :----------: | -----------: | 
+| 1 | A | 20 | 
+| 2 | B | 300 | 
+| 3 | C | 20 | 
+| 4 | D | NaN | 
+| 5 | E | 300 |  
+   
+(i) Get the index of first occurrence of minimum in 'Score' column by [pandas.DataFrame.idxmin](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.idxmin.html)
+```python
+df['Score'].idxmin()
+```
+> 1
+
+(ii) Get the index of first occurrence of maximum in 'Score' column by [pandas.DataFrame.idxmax](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.idxmax.html)
+```python
+df['Score'].idxmax()
+```
+> 2
+
+(iii) Get the index of maximum in 'Score' column      
+```python
+df[ df['Score']==df['Score'].max() ].index
+```
+> Int64Index([2, 5], dtype='int64')
+
+(iv) Select the value in 'ID' column having the maximum of 'Score' column  
+```python
+df.loc[ df['Score']==df['Score'].max(), 'ID' ]
+```
+> 2    B  
+> 5    E  
+> Name: ID, dtype: object  
+
 Back to [Contents](#Contents)
