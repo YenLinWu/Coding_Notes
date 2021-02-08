@@ -299,7 +299,7 @@ def hcf(x,y):
 - Index of Minimum/Maximum Value in DataFrame
 ```python
 # Create a data frame
-df = pd.DataFrame( {'ID':['A','B','C','D','E'],'Score':[20,300,20,50,300]},
+df = pd.DataFrame( {'ID':['A','B','C','D','E'],'Score':[20,300,20,np.nan,300]},
                    index=[1,2,3,4,5] )
 df
 ```
