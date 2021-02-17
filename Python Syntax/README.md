@@ -275,7 +275,14 @@ for i, a in enumerate( list_ ):
 > 0 A  
 > 1 B  
 > 2 C  
-  
+ 
+- `shutil.rmtree()` function deletes an entire folder (that is not empty).   
+    - Note that the [shutil](https://docs.python.org/3/library/shutil.html) module offers a number of high-level operations on files and collections of files.
+```python
+import shutil
+shutil.rmtree( FolderPath )
+```
+
 Back to [Contents](#Contents)
 
 ## Examples
