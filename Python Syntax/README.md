@@ -5,6 +5,7 @@
 * [String](#String)
 * [List](#List)
 * [Dictionary](#Dictionary)
+* [DataFrame](#DataFrame)
 * [Others](#Others) 
 * [Examples](#Examples)
 
@@ -240,6 +241,66 @@ dict_
 ```
 > {4: 'D', 1: 'A', 2: 'B', 3: 'C'}
   
+Back to [Contents](#Contents)
+
+## DataFrame
+| | Col_1 | Col_2 | Col_3 | 
+| ---------- | ----------: | -----------: | -----------: |
+| 0 | A | 10 | 0.9 | 
+| 1 | B | 15 | 0.8 |
+| 2 | C | 20 | 0.7 |
+| 3 | D | 25 | 0.6 |
+| 4 | E | 30 | 0.5 |
+
+- Get index of rows which column satisfies some conditions  
+```python
+over_20_index = df.index[ df['Col_2']>20 ]
+over_20_index
+
+# Convert index labels to list
+# over_20_index.tolist()
+# > [3, 4]
+```
+> Int64Index([3, 4], dtype='int64')
+
+- Select the rows by specific indexes using `loc[]`.  
+```python
+df.loc[ over_20_index ]
+
+# or 
+# df.loc[ [3,4] ]
+```
+> | | Col_1 | Col_2 | Col_3 | 
+> | ---------- | ----------: | -----------: | -----------: |
+> | 3 | D | 25 | 0.6 |
+> | 4 | E | 30 | 0.5 |
+
+- Drop the rows by specific indexes using `drop()`.  
+  - Note that the [drop](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html) function can drop specified labels from rows or columns.
+```python
+df.drop( over_20_index )
+
+# or 
+# df.drop( [3,4] )
+```
+> | | Col_1 | Col_2 | Col_3 | 
+> | ---------- | ----------: | -----------: | -----------: |
+> | 0 | A | 10 | 0.9 | 
+> | 1 | B | 15 | 0.8 |
+> | 2 | C | 20 | 0.7 |
+ 
+- Drop the columns using `drop()`.  
+```python
+df.drop( columns=['Col_1','Col_3'] )
+```
+> | | Col_2 |
+> | ---------- | ----------: | 
+> | 0 | 10 |  
+> | 1 | 15 |
+> | 2 | 20 | 
+> | 3 | 25 |
+> | 4 | 30 |
+
 Back to [Contents](#Contents)
 
 ## Others
