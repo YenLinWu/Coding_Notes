@@ -47,6 +47,39 @@ str2
 ```
 > '2468'
 
+- Sort a list in ascending, descending or user defined order.
+```python
+# Method 1
+list_ = [1,8,3,6,5,4,7,2,9]
+list_.sort()
+list_
+
+# Method 2
+# Note that sorted() function will return a NEW sorted list.
+list_ = [1,8,3,6,5,4,7,2,9]
+sorted_list = sorted( list_ ) 
+sorted_list
+```
+> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+```python
+list_ = [1,8,3,6,5,4,7,2,9]
+sorted_list = sorted( list_, reverse=True )
+sorted_list
+```
+> [9, 8, 7, 6, 5, 4, 3, 2, 1]
+ 
+```python
+list_ = ['D','a','C','b','B','c','A','d']
+sorted_list_1 = sorted( list_ )
+sorted_list_2 = sorted( list_, key=str.lower )
+
+sorted_list_1
+sorted_list_2
+```
+> ['A', 'B', 'C', 'D', 'a', 'b', 'c', 'd']  
+> ['a', 'A', 'b', 'B', 'C', 'c', 'D', 'd']
+
 - Pick up elements in a list 
 ```python
 list_ = [1,2,3,4,5,6,7,8,9]
@@ -199,16 +232,38 @@ Back to [Contents](#Contents)
 ```python
 keys = [1,2,3]
 values = ['A','B','C']
+
+# Method 1
 dict_ = dict( zip(keys,values) )
+
+# Method 2
+dict_ = { k:v for k, v in zip(keys,values) }
+
 dict_
 ```
 > {1: 'A', 2: 'B', 3: 'C'}  
 
+- Sort a dictionary by key/value
 ```python
-dict_ = { k:v for k, v in zip(keys,values) }
-dict_
+dict_ = { 4:'A', 1:'C', 2:'E', 3:'D', 5:'B' }
+
+# Sort by key
+# Method 1
+sorted_by_key = dict( sorted( dict_.items(), key=lambda item: item[0] ) )
+# Method 2
+sorted_by_key = { k: v for k, v in sorted(dict_.items(), key=lambda item: item[0]) } 
+
+# Sort by value
+# Method 1
+sorted_by_value = dict( sorted( dict_.items(), key=lambda item: item[1] ) )
+# Method 2
+sorted_by_value = { k: v for k, v in sorted(dict_.items(), key=lambda item: item[1]) } 
+
+sorted_by_key
+sorted_by_value
 ```
-> {1: 'A', 2: 'B', 3: 'C'}  
+> {1: 'C', 2: 'E', 3: 'D', 4: 'A', 5: 'B'}   
+> {4: 'A', 5: 'B', 1: 'C', 3: 'D', 2: 'E'}  
 
 - Get value of Key  
 ```python
