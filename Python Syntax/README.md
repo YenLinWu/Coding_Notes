@@ -301,11 +301,11 @@ Back to [Contents](#Contents)
 ## DataFrame
 | | Col_1 | Col_2 | Col_3 | 
 | ---------- | ----------: | -----------: | -----------: |
-| 0 | A | 10 | 0.9 | 
-| 1 | B | 15 | 0.8 |
+| 0 | A | 40 | 0.9 | 
+| 1 | B | 25 | 0.8 |
 | 2 | C | 20 | 0.7 |
-| 3 | D | 25 | 0.6 |
-| 4 | E | 30 | 0.5 |
+| 3 | D | 30 | 0.6 |
+| 4 | A | 15 | 0.5 |
 
 - Get index of rows which column satisfies some conditions  
 ```python
@@ -314,9 +314,9 @@ over_20_index
 
 # Convert index labels to list
 # over_20_index.tolist()
-# > [3, 4]
+# > [0, 1, 3]
 ```
-> Int64Index([3, 4], dtype='int64')
+> Int64Index([0, 1, 3], dtype='int64')
 
 - Select the rows by specific indexes using `loc[]`.  
 ```python
@@ -327,8 +327,9 @@ df.loc[ over_20_index ]
 ```
 > | | Col_1 | Col_2 | Col_3 | 
 > | ---------- | ----------: | -----------: | -----------: |
-> | 3 | D | 25 | 0.6 |
-> | 4 | E | 30 | 0.5 |
+> | 0 | A | 40 | 0.9 |
+> | 1 | B | 25 | 0.8 |
+> | 3 | D | 30 | 0.6 |
 
 - Drop the rows by specific indexes using `drop()`.  
   - Note that the [drop](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html) function can drop specified labels from rows or columns.
@@ -340,9 +341,8 @@ df.drop( over_20_index )
 ```
 > | | Col_1 | Col_2 | Col_3 | 
 > | ---------- | ----------: | -----------: | -----------: |
-> | 0 | A | 10 | 0.9 | 
-> | 1 | B | 15 | 0.8 |
 > | 2 | C | 20 | 0.7 |
+> | 4 | A | 15 | 0.5 |
  
 - Drop the columns using `drop()`.  
 ```python
@@ -350,11 +350,35 @@ df.drop( columns=['Col_1','Col_3'] )
 ```
 > | | Col_2 |
 > | ---------- | ----------: | 
-> | 0 | 10 |  
-> | 1 | 15 |
+> | 0 | 40 |  
+> | 1 | 25 |
 > | 2 | 20 | 
-> | 3 | 25 |
-> | 4 | 30 |
+> | 3 | 30 |
+> | 4 | 15 |
+
+- Sort the dataframe by multiple columns using [`sort_values()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html).     
+```python
+df.sort_values( by=['Col_1'], ascending=True, inplace=False )
+```
+| | Col_1 | Col_2 | Col_3 | 
+| ---------- | ----------: | -----------: | -----------: |
+| 0 | A | 40 | 0.9 | 
+| 4 | A | 15 | 0.5 |
+| 1 | B | 25 | 0.8 |
+| 2 | C | 20 | 0.7 |
+| 3 | D | 30 | 0.6 |
+
+```python
+df.sort_values( by=['Col_1','Col_2'], ascending=True, inplace=False )
+```
+| | Col_1 | Col_2 | Col_3 | 
+| ---------- | ----------: | -----------: | -----------: |
+| 4 | A | 15 | 0.5 | 
+| 0 | A | 40 | 0.9 |
+| 1 | B | 25 | 0.8 |
+| 2 | C | 20 | 0.7 |
+| 3 | D | 30 | 0.6 |
+
 
 Back to [Contents](#Contents)
 
