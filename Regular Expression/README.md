@@ -21,7 +21,7 @@
 |^| Match the beginning of the input. <br/> 匹配開頭與 <code>^</code> 鄰接字符相符的字符 |
 |$| Match the end of the input. <br/> 匹配結尾與 <code>$</code> 鄰接字符相符的字符 |
 |&#92;| Escape the next character. This allows you to match reserved characters <code>[ ] ( ) { } . * + ? ^ $ \ &#124;</code> <br/> 表示鄰接字符應視為字符 |
-|&#124;| Alternation. Match either the characters before or the characters after the symbol. |
+|&#124;| Alternation. Match either the characters before or the characters after the symbol. |  
 
 Back to [Contents](#Contents)
 <br>
@@ -51,6 +51,7 @@ Back to [Contents](#Contents)
 | 106 台北市<a href="#learn-regex"><strong>大安區<strong></a>仁愛路 <br> 801 高雄市<a href="#learn-regex"><strong>前金區<strong></a>八德二路 <br> 266 宜蘭縣<a href="#learn-regex"><strong>三星鄉<strong></a>建富路一段 | <code>(?<=市\|縣)(.*)(?<=區\|鄉)</code> |
 | (隨文引入)(<a href="#learn-regex"><strong>ATTCH1.pdf<strong></a>) <br> 如主旨(保險單、保險費收據影本各1份)(<a href="#learn-regex"><strong>ATTCH2.pdf<strong></a>) <br> 如文(<a href="#learn-regex"><strong>ATTCH1.pdf、ATTCH2.pdf、ATTCH3.pdf<strong></a>) | <code>(?<=\\()([^\\(]*pdf)(?=\\))</code> |   
 | 01_<a href="#learn-regex"><strong>Test01<strong></a>.pdf <br> 02_<a href="#learn-regex"><strong>測試檔02<strong></a>.pdf <br> 03_<a href="#learn-regex"><strong>測試檔_20210426<strong></a>.pdf | <code>(?<=_)(.*)(?=.pdf)</code> |  
+| 01_A1_<a href="#learn-regex"><strong>File1<strong></a>.pdf <br> 02_B1_<a href="#learn-regex"><strong>File 2<strong></a>.pdf | <code>[^_]+(?=.pdf)</code> |  
 | <a href="#learn-regex"><strong>Tom1112<strong></a>@gmail.com <br> <a href="#learn-regex"><strong>Tom_1112<strong></a>@gmail.com <br> <a href="#learn-regex"><strong>Tom Wu<strong></a>@gmail.com | <code>^.+(?=@)</code> | 
   
 Back to [Contents](#Contents)  
