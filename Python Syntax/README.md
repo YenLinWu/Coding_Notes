@@ -360,25 +360,54 @@ df.drop( columns=['Col_1','Col_3'] )
 ```python
 df.sort_values( by=['Col_1'], ascending=True, inplace=False )
 ```
-| | Col_1 | Col_2 | Col_3 | 
-| ---------- | ----------: | -----------: | -----------: |
-| 0 | A | 40 | 0.9 | 
-| 4 | A | 15 | 0.5 |
-| 1 | B | 25 | 0.8 |
-| 2 | C | 20 | 0.7 |
-| 3 | D | 30 | 0.6 |
+> | | Col_1 | Col_2 | Col_3 | 
+> | ---------- | ----------: | -----------: | -----------: |
+> | 0 | A | 40 | 0.9 | 
+> | 4 | A | 15 | 0.5 |
+> | 1 | B | 25 | 0.8 |
+> | 2 | C | 20 | 0.7 |
+> | 3 | D | 30 | 0.6 |
 
 ```python
 df.sort_values( by=['Col_1','Col_2'], ascending=True, inplace=False )
 ```
+> | | Col_1 | Col_2 | Col_3 | 
+> | ---------- | ----------: | -----------: | -----------: |
+> | 4 | A | 15 | 0.5 | 
+> | 0 | A | 40 | 0.9 |
+> | 1 | B | 25 | 0.8 |
+> | 2 | C | 20 | 0.7 |
+> | 3 | D | 30 | 0.6 |
+
+---         
+---       
+
 | | Col_1 | Col_2 | Col_3 | 
 | ---------- | ----------: | -----------: | -----------: |
-| 4 | A | 15 | 0.5 | 
-| 0 | A | 40 | 0.9 |
-| 1 | B | 25 | 0.8 |
-| 2 | C | 20 | 0.7 |
-| 3 | D | 30 | 0.6 |
+| 0 | A | 1 | False | 
+| 1 | B | 20 | True |
+| 2 | C | 300 | False |
 
+- Repest rows in a DataFrame using [`numpy.repeat()`](https://numpy.org/doc/stable/reference/generated/numpy.repeat.html).     
+```python
+df.loc[np.repeat(df.index.values, 2)]
+```
+> | | Col_1 | Col_2 | Col_3 | 
+> | ---------- | ----------: | -----------: | -----------: |
+> | 0 | A | 1 | False | 
+> | 0 | A | 1 | False | 
+> | 1 | B | 20 | True | 
+> | 1 | B | 20 | True |
+> | 2 | C | 300 | False |
+> | 2 | C | 300 | False |
+
+```python
+df.loc[np.repeat(df.index.values[1], 2)]
+```
+> | | Col_1 | Col_2 | Col_3 | 
+> | ---------- | ----------: | -----------: | -----------: |
+> | 1 | B | 20 | True | 
+> | 1 | B | 20 | True |
 
 Back to [Contents](#Contents)
 
