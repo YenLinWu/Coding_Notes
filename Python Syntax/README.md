@@ -520,7 +520,7 @@ df = pd.DataFrame( {'Score':[np.nan,10,20,30,50,70,90]} )
 df
 ```
 | | Score | 
-| ---------- | :----------: | 
+| ---------- | ----------: | 
 | 0 | NaN | 
 | 1 | 10 | 
 | 2 | 20 | 
@@ -535,7 +535,7 @@ df['Rank'] = df.apply( lambda x: 'A' if x['Score']<30 else ('B' if x['Score']<60
 df
 ```
 > | | Score | Rank |
-> | ---------- | :----------: | -----------: | 
+> | ---------- | ----------: | -----------: | 
 > | 0 | NaN | C | 
 > | 1 | 10 | A |
 > | 2 | 20 | A |
@@ -550,7 +550,7 @@ df['Rank'] = np.where( df['Score']<30, 'A', np.where(df['Score']<60, 'B', 'C') )
 df
 ```
 > | | Score | Rank |
-> | ---------- | :----------: | -----------: |   
+> | ---------- | ----------: | -----------: |   
 > | 0 | NaN | C |   
 > | 1 | 10 | A |
 > | 2 | 20 | A |
@@ -562,9 +562,9 @@ df
 (iii) [numpy.select()](https://numpy.org/doc/stable/reference/generated/numpy.select.html)
 ```python
 df['New Score'] = np.select( 
-    condlist = [df['Score']<30, df['Score']<60], 
-    choicelist = [df['Score']*2, df['Score']+15], 
-    default = df['Score']+5 
+    condlist = [df['Score']<50, (df['Score']>=50)&(df['Score']<=70)], 
+    choicelist = [df['Score']+10, df['Score']+15], 
+    default = df['Score']+8 
     )
     
 df
@@ -573,10 +573,10 @@ df
 > | ---------- | ----------: | ----------: |   
 > | 0 | NaN | NaN |   
 > | 1 | 10 | 20 |  
-> | 2 | 20 | 40 |  
-> | 3 | 30 | 45 |  
+> | 2 | 20 | 30 |  
+> | 3 | 30 | 40 |  
 > | 4 | 50 | 65 |    
-> | 5 | 70 | 75 |   
-> | 6 | 90 | 95 |   
+> | 5 | 70 | 85 |   
+> | 6 | 90 | 98 |   
 
 Back to [Contents](#Contents)
