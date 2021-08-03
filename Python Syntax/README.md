@@ -513,4 +513,70 @@ df.loc[ df['Score']==df['Score'].max(), 'ID' ]
 > 5    E  
 > Name: ID, dtype: object  
 
+- if-elif-else in DataFrame
+```python
+# Create a data frame
+df = pd.DataFrame( {'Score':[np.nan,10,20,30,50,70,90]} )
+df
+```
+| | Score | 
+| ---------- | :----------: | 
+| 0 | NaN | 
+| 1 | 10 | 
+| 2 | 20 | 
+| 3 | 30 | 
+| 4 | 50 |  
+| 5 | 70 |  
+| 6 | 90 |  
+
+(i) if-elif-else in one line  
+```python
+df['Rank'] = df.apply( lambda x: 'A' if x['Score']<30 else ('B' if x['Score']<60 else 'C'), axis=1 )
+df
+```
+> | | Score | Rank |
+> | ---------- | :----------: | -----------: | 
+> | 0 | NaN | C | 
+> | 1 | 10 | A |
+> | 2 | 20 | A |
+> | 3 | 30 | B |
+> | 4 | 50 | B |  
+> | 5 | 70 | C | 
+> | 6 | 90 | C | 
+
+(ii) [numpy.where()](https://numpy.org/doc/stable/reference/generated/numpy.where.html)
+```python
+df['Rank'] = np.where( df['Score']<30, 'A', np.where(df['Score']<60, 'B', 'C') )
+df
+```
+> | | Score | Rank |
+> | ---------- | :----------: | -----------: |   
+> | 0 | NaN | C |   
+> | 1 | 10 | A |
+> | 2 | 20 | A |
+> | 3 | 30 | B |
+> | 4 | 50 | B |  
+> | 5 | 70 | C | 
+> | 6 | 90 | C | 
+
+(iii) [numpy.select()](https://numpy.org/doc/stable/reference/generated/numpy.select.html)
+```python
+df['New Score'] = np.select( 
+    condlist = [df['Score']<30, df['Score']<60], 
+    choicelist = [df['Score']*2, df['Score']+15], 
+    default = df['Score']+5 
+    )
+    
+df
+```
+> | | Score | New Score |   
+> | ---------- | ----------: | ----------: |   
+> | 0 | NaN | NaN |   
+> | 1 | 10 | 20 |  
+> | 2 | 20 | 40 |  
+> | 3 | 30 | 45 |  
+> | 4 | 50 | 65 |    
+> | 5 | 70 | 75 |   
+> | 6 | 90 | 95 |   
+
 Back to [Contents](#Contents)
