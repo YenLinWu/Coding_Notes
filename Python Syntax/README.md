@@ -551,6 +551,22 @@ df.loc[ df['Score']==df['Score'].max(), 'ID' ]
 > 5    E  
 > Name: ID, dtype: object  
 
+- Calculate the difference between two consecutive rows of the column by [pandas.DataFrame.shift](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.shift.html)
+```python
+# Create a data frame
+df = pd.DataFrame( {'Col_1':[1,3,5,7,9,11]} )
+df['diff_Col_1'] = df['Col_1'] - df['Col_1'].shift( periods=1 )  
+df
+```
+> |  | Col_1 | diff_Col_1 | 
+> | ---------- | :----------: | -----------: | 
+> | 0 | 1 | NaN | 
+> | 1 | 3 | 2 | 
+> | 2 | 5 | 2 | 
+> | 3 | 7 | 2 | 
+> | 4 | 9 | 2 |  
+> | 5 | 11 | 2 |  
+
 - if-elif-else in DataFrame
 ```python
 # Create a data frame
