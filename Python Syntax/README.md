@@ -409,6 +409,44 @@ df.loc[np.repeat(df.index.values[1], 2)]
 > | 1 | B | 20 | True | 
 > | 1 | B | 20 | True |
 
+---         
+---       
+
+| | Col_1 | 
+| ---------- | ----------: | 
+| 0 | 1 | 
+| 1 | 2 | 
+| 2 | 3 | 
+| 3 | 4 | 
+| 4 | 5 | 
+| 5 | 6 | 
+
+- Shift index in a DataFrame using [`DataFrame.shift()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.shift.html#pandas-dataframe-shift). 
+```python
+df['shift_Col_1'] = df['Col_1'].shift( periods=2 )
+```
+> | | Col_1 | shift_Col_1 | 
+> | ---------- | ----------: | ----------: | 
+> | 0 | 1 | NaN |
+> | 1 | 2 | NaN |
+> | 2 | 3 | 1 |
+> | 3 | 4 | 2 |
+> | 4 | 5 | 3 |
+> | 5 | 6 | 4 |
+
+- Rolling window calculations using [`DataFrame.rolling()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html).
+```python
+df['rolling_Col_1'] = df['Col_1'].rolling( window=3 ).mean()
+```
+> | | Col_1 | rolling_Col_1 | 
+> | ---------- | ----------: | ----------: | 
+> | 0 | 1 | NaN |
+> | 1 | 2 | NaN |
+> | 2 | 3 | 2 |
+> | 3 | 4 | 3 |
+> | 4 | 5 | 4 |
+> | 5 | 6 | 5 |
+
 Back to [Contents](#Contents)
 
 ## Others
