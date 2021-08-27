@@ -555,6 +555,8 @@ df.loc[ df['Score']==df['Score'].max(), 'ID' ]
 ```python
 # Create a data frame
 df = pd.DataFrame( {'Col_1':[1,3,5,7,9,11]} )
+
+# Calculate the difference between two consecutive rows of 'Col_1' column
 df['diff_Col_1'] = df['Col_1'] - df['Col_1'].shift( periods=1 )  
 df
 ```
