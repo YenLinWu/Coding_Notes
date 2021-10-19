@@ -41,7 +41,7 @@
   ```
   <img src='./imgs/Step6.png' style='height:400px' />    
 
-- ### Step 7 : 驗證 Kernel 是否在 IDE 中   
+- ### Step 7 : 驗證 Kernel 是否在 IDE(Integrated Development Environment) 中   
   - Jupyter Notebook  
     <img src='./imgs/Step7.png' style='height:400px' />    
   
