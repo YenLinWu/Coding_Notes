@@ -1,4 +1,4 @@
-# 在 Jupyter Notebook/Lab 或 Spyder 中，使用不同虛擬環境(Virtual Environment)的 Kernel
+# 如何在 Python IDE 中使用不同虛擬環境(Virtual Env) 的 Kernel
 
 - ### Step 1 : 開啟 Anaconda Prompt(anaconda3)  
   > 【開始】&rarr; 以系統管理員身分執行【Anaconda Prompt(anaconda3)】 
