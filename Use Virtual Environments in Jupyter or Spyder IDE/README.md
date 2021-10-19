@@ -1,5 +1,53 @@
-# Programming Notes
+# 在 Jupyter Notebook/Lab 或 Spyder 中，使用不同虛擬環境(Virtual Environment)的 Kernel
 
-- [![Python3.7](https://img.shields.io/badge/Python-3.7-blue.svg)](https://github.com/YenLinWu/Coding_Notes/blob/main/Python%20Syntax/README.md)
-- [![SQL](https://img.shields.io/badge/SQL-MySQL-green.svg)](https://github.com/YenLinWu/Coding_Notes/blob/main/SQL%20Syntax/README.md)
-- [![RegularExpression](https://img.shields.io/badge/RE-RegularExpression-yellow.svg)](https://github.com/YenLinWu/Coding_Notes/blob/main/Regular%20Expression/README.md)
+- ### Step 1 : 開啟 Anaconda Prompt(anaconda3)  
+  > 【開始】&rarr; 以系統管理員身分執行【Anaconda Prompt(anaconda3)】 
+  <img src='./imgs/Step1.png' style='height:400px' />
+  
+- ### Step 2 : 創建新的虛擬環境  
+  ```console
+  conda create --name 虛擬環境名稱 python=3.9
+  ```
+  <img src='./imgs/Step2.png' style='height:400px' />
+  
+- ### Step 3 : 啟動虛擬環境   
+  ```console
+  activate 虛擬環境名稱
+  ```
+  <img src='./imgs/Step3.png' style='height:400px' />
+  
+- ### Step 4 : 安裝 ipykernel   
+  ```console
+  pip install ipykernel
+  ```
+  <img src='./imgs/Step4.png' style='height:400px' />
+  
+- ### Step 5 : 建立連結到虛擬環境的 Kernel   
+  - Jupyter Notebook/Lab with ipykernel
+    ```console
+    python -m ipykernel install --user --name=Kernel名稱
+    ```
+    <img src='./imgs/Step5.png' style='height:400px' /> 
+  
+  - Spyder
+    ```console  
+    python install spyder-kernels
+    ```
+    <img src='./imgs/Step9.png' style='height:400px' /> 
+  
+- ### Step 6 : 離開虛擬環境   
+  ```console
+  conda deactivate
+  ```
+  <img src='./imgs/Step6.png' style='height:400px' />    
+
+- ### Step 7 : 驗證 Kernel 是否在 IDE 中   
+  - Jupyter Notebook  
+    <img src='./imgs/Step7.png' style='height:400px' />    
+  
+  - Jupyter Lab  
+    <img src='./imgs/Step8.png' style='height:400px' />   
+  
+  - Spyder    
+    【Tools】 &rarr; 【Preferences】 &rarr; 【Python interpreter】
+    <img src='./imgs/Step10.png' style='height:400px' /> 
