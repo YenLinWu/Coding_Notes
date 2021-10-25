@@ -51,3 +51,9 @@
   - Spyder    
     【Tools】 &rarr; 【Preferences】 &rarr; 【Python interpreter】
     <img src='./imgs/Step10.png' style='height:400px' /> 
+
+- ### Step 8 : 移除虛擬環境的 Kernel   
+  - Jupyter Notebook / Lab   
+  ```console  
+  jupyter kernelspec remove Kernel名稱
+  ```   
