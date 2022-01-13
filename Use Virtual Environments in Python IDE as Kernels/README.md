@@ -16,11 +16,12 @@
   ```
   <img src='./imgs/Step3.png' style='height:400px' />
   
-- ### Step 4 : 安裝 ipykernel   
+- ### Step 4 : 安裝套件    
   ```console
-  pip install ipykernel
+  pip install -r requirements.txt
+  # 註: 須安裝 ipykernel
   ```
-  <img src='./imgs/Step4.png' style='height:400px' />
+  <img src='./imgs/Step4_v2.png' style='height:400px' />
   
 - ### Step 5 : 建立連結到虛擬環境的 Kernel   
   - Jupyter Notebook/Lab with ipykernel
