@@ -32,7 +32,7 @@
   
   - Spyder
     ```console  
-    p install spyder-kernels
+    pip install spyder-kernels
     ```
     <img src='./imgs/Step9.png' style='height:400px' /> 
   
